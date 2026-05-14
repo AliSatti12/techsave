@@ -63,18 +63,18 @@ const CartPage = () => {
               >
                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-2xl bg-gray-100">
                   <img
-                    src={item.images?.[0] || item.image}
-                    alt={item.title || item.name}
+                    src={"images" in item ? item.images[0] : item.image}
+                    alt={"title" in item ? item.title : item.name}
                     className="h-full w-full object-cover"
                   />
                 </div>
 
                 <div className="flex-grow">
                   <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">
-                    {item.category?.name || item.brand}
+                    {"category" in item ? item.category.name : item.brand}
                   </span>
                   <h3 className="text-lg font-bold text-gray-900 mb-1 line-clamp-1">
-                    {item.title || item.name}
+                    {"title" in item ? item.title : item.name}
                   </h3>
                   <p className="text-xl font-black text-gray-900">
                     ${item.price}
