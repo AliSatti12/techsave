@@ -45,7 +45,7 @@ const CheckoutPage = () => {
               
                 <div className="space-y-1">
                   <input
-                    {...register("firstName", { required: "First name zaroori hai" })}
+                    {...register("firstName", { required: "First name is required" })}
                     placeholder="First Name"
                     className={`w-full p-4 bg-gray-50 border rounded-2xl outline-none transition-all ${errors.firstName ? 'border-red-500' : 'border-gray-200 focus:ring-2 focus:ring-red-500'}`}
                   />
@@ -55,7 +55,7 @@ const CheckoutPage = () => {
             
                 <div className="space-y-1">
                   <input
-                    {...register("lastName", { required: "Last name zaroori hai" })}
+                    {...register("lastName", { required: "Last name is required" })}
                     placeholder="Last Name"
                     className={`w-full p-4 bg-gray-50 border rounded-2xl outline-none transition-all ${errors.lastName ? 'border-red-500' : 'border-gray-200 focus:ring-2 focus:ring-red-500'}`}
                   />
@@ -67,8 +67,8 @@ const CheckoutPage = () => {
               <div className="space-y-1">
                 <input
                   {...register("email", { 
-                    required: "Email address lazmi hai",
-                    pattern: { value: /^\S+@\S+$/i, message: "Sahi email likhein" }
+                    required: "Email address is required",
+                    pattern: { value: /^\S+@\S+$/i, message: "Valid email address is required" }
                   })}
                   placeholder="Email Address"
                   className={`w-full p-4 bg-gray-50 border rounded-2xl outline-none transition-all ${errors.email ? 'border-red-500' : 'border-gray-200 focus:ring-2 focus:ring-red-500'}`}
@@ -79,7 +79,7 @@ const CheckoutPage = () => {
             
               <div className="space-y-1">
                 <input
-                  {...register("address", { required: "Address likhna zaroori hai" })}
+                  {...register("address", { required: "Address is required" })}
                   placeholder="Street Address"
                   className={`w-full p-4 bg-gray-50 border rounded-2xl outline-none transition-all ${errors.address ? 'border-red-500' : 'border-gray-200 focus:ring-2 focus:ring-red-500'}`}
                 />
@@ -103,8 +103,8 @@ const CheckoutPage = () => {
               <div className="space-y-1">
                 <input
                   {...register("phone", { 
-                    required: "Phone number lazmi hai",
-                    minLength: { value: 10, message: "Pura number likhein" }
+                    required: "Phone number is required",
+                    minLength: { value: 10, message: "" }
                   })}
                   placeholder="Phone Number (03xx-xxxxxxx)"
                   className={`w-full p-4 bg-gray-50 border rounded-2xl outline-none transition-all ${errors.phone ? 'border-red-500' : 'border-gray-200 focus:ring-2 focus:ring-red-500'}`}
@@ -128,7 +128,7 @@ const CheckoutPage = () => {
               <div className="space-y-4">
                 {cartItems.map(item => (
                   <div key={item.id} className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600 line-clamp-1 flex-1 pr-4">{item.title} x {item.quantity}</span>
+                    <span className="text-gray-600 line-clamp-1 flex-1 pr-4">{item.title || item.name} x {item.quantity}</span>
                     <span className="font-bold">${(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
