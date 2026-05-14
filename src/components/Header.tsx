@@ -142,8 +142,9 @@ export const Header = () => {
         </div>
 
         <div className="bg-white border-b border-gray-200">
-          <div className="max-w-screen-xl mx-auto flex items-center gap-4 px-4 py-3 lg:py-4">
+          <div className="max-w-screen-xl mx-auto flex items-center justify-between gap-4 px-4 py-3 lg:py-4">
             <Link
+            onClick={()=>setMobileOpen(false)}
               to="/"
               className="flex-shrink-0 text-red-700 font-black text-3xl lg:text-4xl tracking-tight leading-none select-none"
               style={{ fontFamily: "'Arial Black', 'Arial', sans-serif" }}
@@ -153,7 +154,7 @@ export const Header = () => {
 
             <form
               onSubmit={handleSearch}
-              className="flex-1 flex items-center border-2 border-gray-200 rounded overflow-hidden focus-within:border-red-700 transition-colors duration-200"
+              className="hidden md:flex flex-1 items-center justify-between border-2 border-gray-200 rounded overflow-hidden focus-within:border-red-700 transition-colors duration-200"
             >
               <input
                 type="text"
@@ -184,15 +185,14 @@ export const Header = () => {
                   size={22}
                   className="group-hover:fill-current transition-all"
                 />
-                
-                 {wishlist.length > 0 && (
+
+                {wishlist.length > 0 && (
                   <span className="absolute -top-0.5 right-1 bg-white text-red-700 text-[11px] font-black rounded-full w-4 h-4 flex items-center justify-center">
                     {wishlist.length}
                   </span>
                 )}
               </Link>
 
-             
               <Link
                 to="/cart"
                 className="relative p-2 text-gray-600 hover:text-red-700 transition-colors "
@@ -227,18 +227,23 @@ export const Header = () => {
             mobileOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="flex border-b border-gray-700 ">
+          <div className="flex border-b border-gray-700">
             <Link
-              to="/account"
+              to="/register"
+              onClick={() => setMobileOpen(false)}
               className="flex-1 flex items-center justify-center gap-2 py-3 text-xs font-bold tracking-wider text-gray-300 hover:bg-gray-800 border-r border-gray-700 transition-colors"
             >
-              <FiUser size={14} /> My Account
+              <FiUser size={14} />
+              My Account
             </Link>
+
             <Link
               to="/login"
-              className="flex-1 flex items-center justify-center gap-2 py-3 text-xs font-bold tracking-wider text-gray-300 hover:bg-gray-800 transition-colors "
+              onClick={() => setMobileOpen(false)}
+              className="flex-1 flex items-center justify-center gap-2 py-3 text-xs font-bold tracking-wider text-gray-300 hover:bg-gray-800 transition-colors"
             >
-              <FiLogIn size={14} /> Log In
+              <FiLogIn size={14} />
+              Log In
             </Link>
           </div>
 
@@ -258,51 +263,49 @@ export const Header = () => {
               Categories
             </p>
             {categories.map((cat) => {
-              console.log(cat)
               return (
-              (
-              <div key={cat.label}>
-                <div className="flex items-center justify-between border-b border-gray-700/50">
-                  <Link
-                    to={cat.href}
-                    onClick={() => !cat.submenu && setMobileOpen(false)}
-                    className="flex-1 px-5 py-3 text-sm font-bold tracking-wide text-gray-200 hover:text-white hover:bg-gray-800 transition-colors"
-                  >
-                    {cat.label}
-                  </Link>
-                  {cat.submenu && (
-                    <button
-                      onClick={() => toggleMobileCategory(cat.label)}
-                      className="px-4 py-3 text-gray-400 hover:text-white transition-colors"
-                      aria-label={`Expand ${cat.label}`}
+                <div key={cat.label}>
+                  <div className="flex items-center justify-between border-b border-gray-700/50">
+                    <Link
+                      to={cat.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex-1 px-5 py-3 text-sm font-bold tracking-wide text-gray-200 hover:text-white hover:bg-gray-800 transition-colors"
                     >
-                      <FiChevronDown
-                        size={15}
-                        className={`transition-transform duration-200 ${
-                          mobileExpanded === cat.label ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
+                      {cat.label}
+                    </Link>
+                    {cat.submenu && (
+                      <button
+                        onClick={() => toggleMobileCategory(cat.label)}
+                        className="px-4 py-3 text-gray-400 hover:text-white transition-colors"
+                        aria-label={`Expand ${cat.label}`}
+                      >
+                        <FiChevronDown
+                          size={15}
+                          className={`transition-transform duration-200 ${
+                            mobileExpanded === cat.label ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {cat.submenu && mobileExpanded === cat.label && (
+                    <div className="bg-gray-800/50">
+                      {cat.submenu.map((sub) => (
+                        <Link
+                          key={sub.label}
+                          to={sub.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="block pl-10 pr-5 py-2.5 text-xs font-semibold text-gray-400 hover:text-red-400 border-b border-gray-700/30 transition-colors"
+                        >
+                          → {sub.label}
+                        </Link>
+                      ))}
+                    </div>
                   )}
                 </div>
-
-                {cat.submenu && mobileExpanded === cat.label && (
-                  <div className="bg-gray-800/50">
-                    {cat.submenu.map((sub) => (
-                      <Link
-                        key={sub.label}
-                        to={sub.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block pl-10 pr-5 py-2.5 text-xs font-semibold text-gray-400 hover:text-red-400 border-b border-gray-700/30 transition-colors"
-                      >
-                        → {sub.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )
-            )})}
+              );
+            })}
           </div>
         </div>
       </header>
@@ -318,7 +321,7 @@ export const Header = () => {
                 onMouseLeave={() => setActiveSubmenu(null)}
               >
                 <Link
-                  to={''}
+                  to={""}
                   className="flex items-center gap-1 px-5 h-11 text-[12px] font-black tracking-widest uppercase text-gray-800 hover:text-red-700 hover:bg-red-50 border-r border-gray-100 transition-colors duration-150 whitespace-nowrap"
                 >
                   {cat.label}
@@ -336,12 +339,11 @@ export const Header = () => {
                   <div className="absolute top-full left-0 z-50 bg-white border border-gray-200 shadow-xl rounded-b-md min-w-[190px] py-1">
                     {cat.submenu.map((sub) => (
                       <Link
-                      onClick={() => setActiveSubmenu(null)}
+                        onClick={() => setActiveSubmenu(null)}
                         key={sub.label}
                         to={sub.href}
                         className="block px-4 py-2.5 text-[12px] font-semibold tracking-wide text-gray-700 hover:bg-red-50 hover:text-red-700 transition-colors"
                       >
-                        
                         {sub.label}
                       </Link>
                     ))}
