@@ -257,7 +257,10 @@ export const Header = () => {
             <p className="px-5 py-2 text-[10px] font-black tracking-widest text-red-400 uppercase">
               Categories
             </p>
-            {categories.map((cat) => (
+            {categories.map((cat) => {
+              console.log(cat)
+              return (
+              (
               <div key={cat.label}>
                 <div className="flex items-center justify-between border-b border-gray-700/50">
                   <Link
@@ -298,7 +301,8 @@ export const Header = () => {
                   </div>
                 )}
               </div>
-            ))}
+            )
+            )})}
           </div>
         </div>
       </header>
@@ -314,7 +318,7 @@ export const Header = () => {
                 onMouseLeave={() => setActiveSubmenu(null)}
               >
                 <Link
-                  to={cat.href}
+                  to={''}
                   className="flex items-center gap-1 px-5 h-11 text-[12px] font-black tracking-widest uppercase text-gray-800 hover:text-red-700 hover:bg-red-50 border-r border-gray-100 transition-colors duration-150 whitespace-nowrap"
                 >
                   {cat.label}

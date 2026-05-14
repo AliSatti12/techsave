@@ -27,20 +27,20 @@ const ProductCardd: React.FC<{ product: Product }> = ({ product }) => {
   const { title, price, description, category, images } = product;
 
   const addtocart = useMyStore((state) => state.addToCart);
-  const wishlist = useWishlist((state) => state.addToWishlist)
-  const list = useWishlist((state) => state.wishlist)
-  console.log(list)
+  const wishlist = useWishlist((state) => state.addToWishlist);
+  const list = useWishlist((state) => state.wishlist);
+  console.log(list);
 
   const handleAddToCart = (product: Product) => {
     toast.success("Add to cart successfully");
-    console.log(product)
+    console.log(product);
     addtocart(product);
   };
 
   const handleWishList = (product: Product) => {
     console.log(product, "whislist");
     toast.success("Add to wishlist successfully");
-    wishlist(product)
+    wishlist(product);
   };
 
   return (
@@ -83,7 +83,7 @@ const ProductCardd: React.FC<{ product: Product }> = ({ product }) => {
             }}
             className="flex-1 bg-red-500 hover:bg-black cursor-pointer text-white font-semibold py-2.5 rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 text-sm"
           >
-           <FiShoppingCart size={22} />
+            <FiShoppingCart size={22} />
             Add to Cart
           </button>
 
@@ -98,8 +98,6 @@ const ProductCardd: React.FC<{ product: Product }> = ({ product }) => {
               }}
             />
           </button>
-           
-        
         </div>
       </div>
     </div>

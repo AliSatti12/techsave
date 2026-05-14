@@ -2,29 +2,28 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import Layout from "./components/Layout";
 
-
-import GamingPc from "./components/Header Pages/GamingPc";
-import CartPage from "./components/Header Pages/Cart";
-import ContactPage from "./components/Header Pages/Contact";
+import GamingPc from "./pages/headerpages/GamingPc";
+import CartPage from "./pages/headerpages/Cart";
+import ContactPage from "./pages/headerpages/Contact";
 import NotFound from "./components/Not-found";
-import LoginPage from "./components/AuthComponent/Login";
-import RegisterPage from "./components/AuthComponent/Register";
+import LoginPage from "./pages/authpages/Login";
+import RegisterPage from "./pages/authpages/Register";
 import ProductDetailsPage from "./components/SingleProduct";
 import CheckoutPage from "./components/CheckoutPage";
-import WishlistPage from "./components/Header Pages/Wishlist";
-import AboutPage from "./components/Header Pages/About";
-import TermsAndConditions from "./components/footer/Term&Condition";
-import AffiliateProgram from "./components/footer/AffiliateProgram";
-import { SmartphonesPage } from "./components/menupages/Smartphones";
-import { LaptopsPage } from "./components/menupages/Laptop";
-import { CameraPage } from "./components/menupages/Camera";
-import { MensFashion } from "./components/menupages/MenFashion";
-import { WomensFashion } from "./components/menupages/WomanFashtion";
-import { KidsFashion } from "./components/menupages/KidFashion";
-import { NewArrivals } from "./components/menupages/NewArrivals";
-import { ClearanceSale } from "./components/menupages/ClearanceSale";
-import { LivingRoom } from "./components/menupages/LivingRoom";
-import { SneakersPage } from "./components/menupages/SneakersPage";
+import WishlistPage from "./pages/headerpages/Wishlist";
+import AboutPage from "./pages/headerpages/About";
+import TermsAndConditions from "./pages/footer/Term&Condition";
+import AffiliateProgram from "./pages/footer/AffiliateProgram";
+import { SmartphonesPage } from "./pages/menupages/Smartphones";
+import { LaptopsPage } from "./pages/menupages/Laptop";
+import { CameraPage } from "./pages/menupages/Camera";
+import { MensFashion } from "./pages/menupages/MenFashion";
+import { WomensFashion } from "./pages/menupages/WomanFashtion";
+import { KidsFashion } from "./pages/menupages/KidFashion";
+import { NewArrivals } from "./pages/menupages/NewArrivals";
+import { ClearanceSale } from "./pages/menupages/ClearanceSale";
+import { LivingRoom } from "./pages/menupages/LivingRoom";
+import { SneakersPage } from "./pages/menupages/SneakersPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,11 +37,11 @@ function App() {
         },
         {
           path: "/about",
-          element: <AboutPage/>,
+          element: <AboutPage />,
         },
         {
           path: "/product/:id",
-          element: <ProductDetailsPage/>,
+          element: <ProductDetailsPage />,
         },
         {
           path: "/electronics/phones",
@@ -86,7 +85,7 @@ function App() {
         },
         {
           path: "/checkout",
-          element: <CheckoutPage/>,
+          element: <CheckoutPage />,
         },
         {
           path: "/contact",

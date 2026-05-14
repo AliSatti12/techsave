@@ -6,16 +6,24 @@ interface Category {
   name: string;
   image: string;
 }
-
-interface Product {
+type ApiProduct = {
   id: number;
   title: string;
   price: number;
   description: string;
   category: Category;
   images: string[];
-}
+};
 
+type SaleProduct = {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  image: string;
+};
+
+type Product = ApiProduct | SaleProduct;
 
 type CartItem = Product & {
   quantity: number;
@@ -23,10 +31,8 @@ type CartItem = Product & {
 
 type Store = {
   cartItems: CartItem[];
-
   addToCart: (product: Product) => void;
   increment: (id: number) => void;
-  
   decrement: (id: number) => void;
   removeFromCart: (id: number) => void;
 };
@@ -35,11 +41,9 @@ export const useMyStore = create<Store>()(
   persist(
     (set) => ({
       cartItems: [],
-
-      addToCart: (product) =>
+     addToCart: (product) =>
         set((state) => {
           const existing = state.cartItems.find((item) => item.id === product.id);
-
           if (existing) {
             return {
               cartItems: state.cartItems.map((item) =>
@@ -49,7 +53,6 @@ export const useMyStore = create<Store>()(
               ),
             };
           }
-
           return {
             cartItems: [...state.cartItems, { ...product, quantity: 1 }],
           };
