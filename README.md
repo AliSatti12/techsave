@@ -4,8 +4,8 @@ TechSave is a fully functional e-commerce web application specifically designed 
 
 🚀 Live Demo
 
-You can view the live demo here:
-TechSave Live Demo
+You can view the live demo here:https://techsave-bz9r.vercel.app
+
 
 ✨ Key Features
 Responsive Design:
@@ -18,6 +18,7 @@ State Management:
 Efficient data handling for a smooth and fast user experience.
 Modern UI/UX:
 Clean and tech-focused interface with a modern design aesthetic.
+
 🛠️ Tech Stack
 Frontend: React.js
 Styling: Tailwind CSS (Responsive & Modern UI)
