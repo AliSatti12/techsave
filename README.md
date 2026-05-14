@@ -27,10 +27,3 @@ Aap project ka live demo yahan dekh sakte hain:
 
 ---
 
-## 📦 Installation & Setup
-
-Agar aap is project ko locally run karna chahte hain, to in steps ko follow karen:
-
-1. **Repository ko clone karen:**
-   ```bash
-   git clone [https://github.com/your-username/techsave.git](https://github.com/your-username/techsave.git)
