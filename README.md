@@ -21,6 +21,7 @@ Modern UI/UX:
 Clean and tech-focused interface with a modern design aesthetic.
 
 🛠️ Tech Stack
+
 Frontend: React.js
 Styling: Tailwind CSS (Responsive & Modern UI)
 Deployment: Vercel
