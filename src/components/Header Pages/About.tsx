@@ -1,5 +1,5 @@
-import React from 'react';
-import { FiTarget, FiUsers, FiAward, FiZap, FiCheckCircle } from 'react-icons/fi';
+
+import {  FiUsers, FiAward, FiZap, FiCheckCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const AboutPage = () => {

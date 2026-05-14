@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   FiUser, FiMail, FiLock, FiEye, FiEyeOff, FiPhone,
-  FiUserPlus, FiAlertCircle, FiArrowRight, FiCheckCircle, FiCheck, FiX,
+   FiAlertCircle, FiArrowRight, FiCheckCircle,
 } from "react-icons/fi";
-import { FaGoogle, FaFacebookF, FaApple } from "react-icons/fa";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+
+
 interface FormData {
   firstName: string;
   lastName: string;
@@ -18,7 +18,6 @@ interface FormData {
   newsletter: boolean;
 }
 
-// ─── Password Strength Logic ──────────────────────────────────────────────────
 const strengthRules = [
   { label: "At least 8 characters", test: (p: string) => p.length >= 8 },
   { label: "One uppercase letter",  test: (p: string) => /[A-Z]/.test(p) },
@@ -34,7 +33,6 @@ const strengthConfig = [
   { label: "Very strong", color: "bg-emerald-600", text: "text-emerald-600"},
 ];
 
-// ─── Sub-Components ───────────────────────────────────────────────────────────
 function InputField({ label, error, required, children }: any) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -51,7 +49,6 @@ function InputField({ label, error, required, children }: any) {
   );
 }
 
-// ─── Main Component ───────────────────────────────────────────────────────────
 export default function RegisterPage() {
   const [step, setStep] = useState<1 | 2>(1);
   const [showPass, setShowPass] = useState(false);
