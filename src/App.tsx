@@ -24,6 +24,8 @@ import { NewArrivals } from "./pages/menupages/NewArrivals";
 import { ClearanceSale } from "./pages/menupages/ClearanceSale";
 import { LivingRoom } from "./pages/menupages/LivingRoom";
 import { SneakersPage } from "./pages/menupages/SneakersPage";
+import { Demo } from "./components/Demo";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -58,6 +60,10 @@ function App() {
         {
           path: "/clothes/men",
           element: <MensFashion />,
+        },
+        {
+          path: "/demo",
+          element: <Demo />,
         },
         {
           path: "clothes/women",

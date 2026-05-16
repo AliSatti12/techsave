@@ -35,7 +35,7 @@ const topLinks: NavLink[] = [
 const categories: Category[] = [
   {
     label: "Clothes",
-    href: "/clothes",
+    href: "",
     submenu: [
       { label: "Men's Fashion", href: "/clothes/men" },
       { label: "Women's Dresses", href: "/clothes/women" },
@@ -44,7 +44,7 @@ const categories: Category[] = [
   },
   {
     label: "Electronics",
-    href: "/electronics",
+    href: "",
     submenu: [
       { label: "Smartphones", href: "/electronics/phones" },
       { label: "Laptops", href: "/electronics/laptops" },
@@ -53,7 +53,7 @@ const categories: Category[] = [
   },
   {
     label: "Furniture",
-    href: "/furniture",
+    href: "",
     submenu: [
       { label: "Living Room", href: "/furniture/living" },
       { label: "Bedroom", href: "/furniture/bedroom" },
@@ -62,7 +62,7 @@ const categories: Category[] = [
   },
   {
     label: "Shoes",
-    href: "/shoes",
+    href: "",
     submenu: [
       { label: "Sneakers", href: "/shoes/sneakers" },
       { label: "Formal", href: "/shoes/formal" },
