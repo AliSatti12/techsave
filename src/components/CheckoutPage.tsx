@@ -18,6 +18,7 @@ const CheckoutPage = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CheckoutInputs>();
 
@@ -30,7 +31,9 @@ const CheckoutPage = () => {
 
   const onSubmit = (data: CheckoutInputs) => {
     console.log("Order Placed:", { customer: data, items: cartItems, total });
+    reset()
     toast.success("Order Placed Successfully!");
+
   };
 
   return (
