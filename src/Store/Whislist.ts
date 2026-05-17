@@ -1,7 +1,7 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-interface Product {
+interface ApiProduct {
   id: number;
   title: string;
   price: number;
@@ -9,7 +9,20 @@ interface Product {
   description: string;
 }
 
-interface StoreState { 
+interface SaleProduct {
+  id: number;
+  name: string;
+  brand: string;
+  price: number;
+  image: string;
+}
+
+
+type Product = ApiProduct | SaleProduct;
+
+
+
+interface StoreState {
   wishlist: Product[];
   addToWishlist: (product: Product) => void;
   removeFromWishlist: (id: number) => void;
@@ -21,21 +34,24 @@ export const useWishlist = create<StoreState>()(
     (set) => ({
       wishlist: [],
 
-      addToWishlist: (product) => set((state) => {
-        const exists = state.wishlist.find((item) => item.id === product.id);
-        if (exists) {
-        
-          return { wishlist: state.wishlist.filter((item) => item.id !== product.id) };
-        }
-        return { wishlist: [...state.wishlist, product] };
-      }),
+      addToWishlist: (product) =>
+        set((state) => {
+          const exists = state.wishlist.find((item) => item.id === product.id);
+          if (exists) {
+            return {
+              wishlist: state.wishlist.filter((item) => item.id !== product.id),
+            };
+          }
+          return { wishlist: [...state.wishlist, product] };
+        }),
 
-      removeFromWishlist: (id) => set((state) => ({
-        wishlist: state.wishlist.filter((item) => item.id !== id)
-      })),
+      removeFromWishlist: (id) =>
+        set((state) => ({
+          wishlist: state.wishlist.filter((item) => item.id !== id),
+        })),
 
       clearWishlist: () => set({ wishlist: [] }),
     }),
-    { name: 'user-wishlist' } 
-  )
+    { name: "user-wishlist" },
+  ),
 );

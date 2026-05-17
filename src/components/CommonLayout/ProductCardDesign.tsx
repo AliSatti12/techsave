@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { FiShoppingCart, FiEye, FiHeart } from "react-icons/fi";
 import { useMyStore } from "../../Store/Store";
+import { useWishlist } from "../../Store/Whislist";
 
 interface Category {
   id: number;
@@ -19,6 +20,7 @@ interface Product {
 
 export const ProductCard = ({ product }: { product: any }) => {
   const addtocart = useMyStore((state) => state.addToCart);
+  const addwishlist = useWishlist((state) => state.addToWishlist)
 
   const handleAddToCart = (product: Product) => {
     toast.success("Add to cart successfully");
@@ -26,6 +28,12 @@ export const ProductCard = ({ product }: { product: any }) => {
     addtocart(product);
   };
 
+  const handleWishlist = (e : React.MouseEvent , product :  Product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addwishlist(product)
+    toast.success("Add to wishlist successfully")
+  }
   return (
     <div className="group bg-white rounded-[2rem] border border-gray-100 p-4 hover:shadow-2xl transition-all duration-500">
       <div className="relative aspect-square mb-4 overflow-hidden rounded-2xl bg-gray-50">
@@ -35,7 +43,10 @@ export const ProductCard = ({ product }: { product: any }) => {
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute top-3 right-3 space-y-2 translate-x-12 group-hover:translate-x-0 transition-transform duration-300">
-          <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-600 hover:text-white">
+          <button
+          className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-600 hover:text-white cursor-pointer"
+          onClick={(e)=>handleWishlist(e, product)}
+          >
             <FiHeart />
           </button>
           <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-600 hover:text-white">
@@ -59,7 +70,7 @@ export const ProductCard = ({ product }: { product: any }) => {
               e.preventDefault();
               handleAddToCart(product);
             }}
-            className="bg-black text-white px-4 py-2 rounded-xl text-xs font-black uppercase flex items-center gap-2 hover:bg-red-600 transition-colors"
+            className="bg-black text-white px-4 py-2 rounded-xl text-xs font-black uppercase flex items-center gap-2 hover:bg-red-600 transition-colors cursor-pointer"
           >
             <FiShoppingCart size={14} /> Add
           </button>
