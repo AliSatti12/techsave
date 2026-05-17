@@ -117,7 +117,7 @@ const WishlistPage = () => {
                 <div className="mt-auto flex gap-2">
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="flex-1 flex items-center justify-center gap-3 bg-gray-900 text-white py-4 rounded-2xl font-bold hover:bg-red-700 transition-all duration-300 active:scale-95 shadow-lg shadow-gray-200"
+                    className="flex-1 flex items-center justify-center gap-3 bg-gray-900 text-white py-4 rounded-2xl font-bold hover:bg-red-700 transition-all duration-300 active:scale-95 shadow-lg shadow-gray-200 cursor-pointer"
                   >
                     <FiShoppingCart size={19} />
                     Add to Cart
