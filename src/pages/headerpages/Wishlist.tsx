@@ -91,7 +91,7 @@ const WishlistPage = () => {
                     removeFromWishlist(product.id);
                     toast.error("Removed from wishlist");
                   }}
-                  className="absolute top-8 right-8 bg-white/80 backdrop-blur-md p-3 rounded-2xl text-gray-400 hover:text-red-600 hover:bg-white transition-all shadow-lg border border-white/50"
+                  className="absolute top-8 right-8 bg-white/80 backdrop-blur-md p-3 rounded-2xl text-gray-400 hover:text-red-600 hover:bg-white transition-all shadow-lg border border-white/50 cursor-pointer"
                   title="Remove from wishlist"
                 >
                   <FiTrash2 size={18} />
